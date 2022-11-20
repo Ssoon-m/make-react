@@ -1,0 +1,22 @@
+{
+  "name": "make-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ssoon-m/make-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ssoon-m/make-react/issues"
+  },
+  "homepage": "https://github.com/Ssoon-m/make-react#readme",
+  "devDependencies": {
+    "webpack-cli": "^5.0.0"
+  }
+}
