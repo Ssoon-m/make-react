@@ -4,7 +4,7 @@ const createDOM = (node) => {
   }
   const element = document.createElement(node.tag);
 
-  node.children.map(createDOM).forEach(element.appendChild.bind(element));
+  node.children.map(createDOM).forEach((item) => element.appendChild(item));
   return element;
 };
 
