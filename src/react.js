@@ -12,4 +12,8 @@ const createDOM = (node) => {
   return element;
 };
 
-export { createDOM };
+const render = (vdom, container) => {
+  container.appendChild(createDOM(vdom));
+};
+
+export { createDOM, render };
