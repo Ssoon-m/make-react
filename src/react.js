@@ -12,8 +12,14 @@ const createDOM = (node) => {
   return element;
 };
 
+const createElement = (tag, props, ...children) => ({
+  tag,
+  props,
+  children,
+});
+
 const render = (vdom, container) => {
   container.appendChild(createDOM(vdom));
 };
 
-export { createDOM, render };
+export { createElement, createDOM, render };
