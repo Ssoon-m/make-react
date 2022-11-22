@@ -1,4 +1,4 @@
-// import { createDOM, createElement, render } from './react';
+import { createDOM, createElement, render } from './react';
 
 // const vdom = {
 //   tag: 'p',
@@ -40,15 +40,11 @@ const vdom = createElement(
   {},
   createElement('h1', {}, '리액트 만들기'),
   createElement(
-    'h1',
+    'ul',
     {},
-    createElement(
-      'ul',
-      {},
-      createElement('li', { style: 'color:red' }, '첫 번째 아이템'),
-      createElement('li', { style: 'color:blud' }, '두 번째 아이템'),
-      createElement('li', { style: 'color:green' }, '세 번째 아이템')
-    )
+    createElement('li', { style: 'color:red' }, '첫 번째 아이템'),
+    createElement('li', { style: 'color:blud' }, '두 번째 아이템'),
+    createElement('li', { style: 'color:green' }, '세 번째 아이템')
   )
 );
 
