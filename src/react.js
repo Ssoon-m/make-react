@@ -14,11 +14,20 @@ const createDOM = (node) => {
 
 const createElement = (tag, props, ...children) => {
   props = props || {};
-  return {
+  if (typeof tag === 'function') {
+    if (children.length > 0) {
+      return tag({
+        ...props,
+        children: children.length === 1 ? children[0] : children
+      })
+    }
+  } else {
+  } return {
     tag,
-    props: props,
+    props,
     children,
   };
+
 }
 
 const render = (vdom, container) => {
