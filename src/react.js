@@ -1,3 +1,5 @@
+const hooks = [];
+let currentComponent = 0;
 export class Component {
   constructor(props) {
     this.props = props;
@@ -10,11 +12,11 @@ const createDOM = (node) => {
   }
   const element = document.createElement(node.tag);
 
-  Object.entries(node.props).forEach(([name, value]) =>
+  node.props && Object.entries(node.props).forEach(([name, value]) =>
     element.setAttribute(name, value)
   );
 
-  node.children.map(createDOM).forEach((item) => element.appendChild(item));
+  node.children && node.children.map(createDOM).forEach((item) => element.appendChild(item));
   return element;
 };
 
@@ -25,24 +27,39 @@ const makeProps = (props, children) => {
   }
 }
 
+const useState = (initalValue) => {
+  let position = currentComponent - 1;
+  if (!hooks[position]) {
+    hooks[position] = initalValue;
+  }
+  const modifier = nextValue => {
+    hooks[position] = nextValue;
+  }
+  return [hooks[position], modifier]
+}
+
 const createElement = (tag, props, ...children) => {
   props = props || {};
   if (typeof tag === 'function') {
     if (tag.prototype instanceof Component) {
       const instance = new tag(makeProps(props, children))
       return instance.render();
-    } else {
-      if (children.length > 0) {
-        return tag(makeProps(props, children))
-      }
     }
-  } else {
-  } return {
+
+    hooks[currentComponent] = null;
+    currentComponent++;
+
+    if (children.length > 0) {
+      return tag(makeProps(props, children))
+    } else {
+      return tag(props)
+    }
+  }
+  return {
     tag,
     props,
     children,
   };
-
 }
 
 const render = (vdom, container) => {

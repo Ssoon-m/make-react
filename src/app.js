@@ -15,7 +15,7 @@ const Item = (props) => {
   return <li style={`color:${props.color}`}>{props.children}</li>
 }
 
-const App = <p>
+const App = () => <p>
   <Title>React 정말 잘 만들기</Title>
   <ul>
     <Item color="red">첫 번째 아이템</Item>
@@ -24,4 +24,4 @@ const App = <p>
   </ul>
 </p>
 
-render(App, document.querySelector('#root'));
+render(<App />, document.querySelector('#root'));
